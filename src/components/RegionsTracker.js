@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Card, Container, Row, Col, Button } from "react-bootstrap";
 import ProgressBar from "./UnlockProgressBar";
-import RelicCheckImg from '../resources/img/relic-check.png';
 import { MAX_TASKS, REGIONS, REGION_UNLOCKS, isRegionUnlocked, INITIAL_REGIONS_STATE, getTasksToNextRegion } from '../util/region-util';
 import RegionMap from "./RegionMap";
 import regionsData from '../resources/regionsData.json';
@@ -25,7 +24,6 @@ export default function RegionsTracker({ totalTasks, unlockedRegions, setUnlocke
                     curValue={totalTasks}
                     maxValue={MAX_TASKS}
                     steps={REGION_UNLOCKS}
-                    stepImage={<img src={RelicCheckImg} alt='' height={40} />}
                 />
             </Card>
 
@@ -44,7 +42,7 @@ export default function RegionsTracker({ totalTasks, unlockedRegions, setUnlocke
                                         {REGIONS.map(regionName =>
                                             <Button
                                                 key={regionName}
-                                                className='m-3'
+                                                className='m-1'
                                                 variant={selectedRegion === regionName ? 'light' : 'outline-light'}
                                                 onClick={() => setSelectedRegion(regionName)}
                                             >
@@ -78,13 +76,11 @@ export default function RegionsTracker({ totalTasks, unlockedRegions, setUnlocke
                                     )
                                 }
                             </div>
-                            <div className={'relic-table p-2'} style={{ maxHeight: '700px', overflowY: 'scroll' }}>
-
+                            <div className={'relic-table-cell p-2'} style={{ maxHeight: '700px', overflowY: 'scroll' }}>
                                 <p>
                                     <h5>Overview:</h5>
                                     {regionsData[selectedRegion].overview}
                                 </p>
-
                                 {regionsData[selectedRegion].travel &&
                                     <p>
                                         The following travel options are restricted unless you have access to the appropriate area:
@@ -93,25 +89,20 @@ export default function RegionsTracker({ totalTasks, unlockedRegions, setUnlocke
                                         </ul>
                                     </p>
                                 }
-
                                 <p>
                                     <h5>Key Info:</h5>
-
                                     Notable Settlements:
                                     <ul>
                                         {regionsData[selectedRegion].settlements.map(listItem => <li key={listItem}>{listItem}</li>)}
                                     </ul>
-
                                     Notable combat-related activities:
                                     <ul>
                                         {regionsData[selectedRegion].combatActivities.map(listItem => <li key={listItem}>{listItem}</li>)}
                                     </ul>
-
                                     Notable non-combat activities:
                                     <ul>
                                         {regionsData[selectedRegion].nonCombatActivities.map(listItem => <li key={listItem}>{listItem}</li>)}
                                     </ul>
-
                                     {regionsData[selectedRegion].shops &&
                                         <React.Fragment>
                                             Notable shops:
@@ -121,27 +112,22 @@ export default function RegionsTracker({ totalTasks, unlockedRegions, setUnlocke
                                         </React.Fragment>
                                     }
                                 </p>
-
                                 <p>
                                     All Slayer Masters will assign tasks from the same Slayer list and assign the same number of Slayer Points on task completion.
                                     Slayer tasks will still respect Slayer and Combat Level requirements.
                                 </p>
-
                                 <p>
                                     Unlocking Misthalin will add the following tasks to your Slayer list:
                                     <ul>
                                         {regionsData[selectedRegion].slayerTasks.map(listItem => <li key={listItem}>{listItem}</li>)}
                                     </ul>
                                 </p>
-
                                 <p>
                                     <h5>Unlocks:</h5>
-
                                     The following quests are automatically completed but will not reward any completion XP:
                                     <ul>
                                         {regionsData[selectedRegion].questUnlocks.map(listItem => <li key={listItem}>{listItem}</li>)}
                                     </ul>
-
                                     {regionsData[selectedRegion].diaryUnlocks &&
                                         <React.Fragment>
                                             {regionsData[selectedRegion].diaryUnlocks.map(diaryData => (
@@ -172,7 +158,6 @@ export default function RegionsTracker({ totalTasks, unlockedRegions, setUnlocke
                                         </React.Fragment>
                                     }
                                 </p>
-
                                 <p>
                                     <h5>Drops:</h5>
 

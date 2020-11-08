@@ -1,3 +1,5 @@
+@import "node_modules/bootstrap/scss/bootstrap";
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -34,6 +36,30 @@ code {
   width: 80%;
   margin-left: auto;
   margin-right: auto;
+}
+
+@include media-breakpoint-down(md) {
+  .content-wrapper {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .content-wrapper {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@include media-breakpoint-down(xs) {
+  .content-wrapper {
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .clickable {
@@ -106,18 +132,14 @@ ul.calc-list {
 }
 
 /* Relic table */
-.relic-table {
-  background-color: #484e53;
-  outline: 1px solid rgba(0,0,0,.125);
-}
-
 .relic-table-cell {
-  outline: 2px solid rgba(0,0,0,.125);
+  background-color: #484e53;
+  border: 2px solid #484e53;
   margin: 2px;
 }
 
 .relic-table-cell.selected {
-  outline: 2px solid #a3ce27;
+  border: 2px solid #a3ce27;
   margin: 2px;
 }
 
